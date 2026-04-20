@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────────────────────────
+// ENUMS
+// ──────────────────────────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum TournamentStatus {
+  UPCOMING
+  ONGOING
+  FINISHED
+}
+
+enum TournamentFormat {
+  SINGLE_ELIMINATION
+  ROUND_ROBIN
+  SURVIVAL_STAGE
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ──────────────────────────────────────────────────────────────
+// MODELS
+// ──────────────────────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  username  String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  avatar    String?          @db.LongText
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  tournaments   Tournament[]   @relation("UserTournaments")
+  registrations Registration[]
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Tournament {
+  id          String           @id @default(cuid())
+  name        String
+  game        String
+  description String?          @db.Text
+  startDate   DateTime         @map("start_date")
+  endDate     DateTime         @map("end_date")
+  maxTeams    Int              @map("max_teams")
+  prizePool   String?          @db.Text
+  status      TournamentStatus @default(UPCOMING)
+  format      TournamentFormat @default(SINGLE_ELIMINATION)
+  banner      String?          @db.LongText
+  createdById String           @map("created_by_id")
+  createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at")
+
+  // Relations
+  createdBy     User           @relation("UserTournaments", fields: [createdById], references: [id])
+  registrations Registration[]
+  matches       Match[]
+
+  @@index([createdById])
+  @@index([status])
+  @@map("tournaments")
+}
+
+model Registration {
+  id           String             @id @default(cuid())
+  tournamentId String             @map("tournament_id")
+  userId       String             @map("user_id") // Người nộp đơn
+  teamName     String             @map("team_name")
+  teamLogo     String?            @db.LongText @map("team_logo")
+  status       RegistrationStatus @default(PENDING)
+  note         String?            @db.Text
+  survivalPoints Int              @default(0)
+  kills          Int              @default(0)
+  top1Count      Int              @default(0)
+  createdAt    DateTime           @default(now()) @map("created_at")
+  updatedAt    DateTime           @updatedAt @map("updated_at")
+
+  // Relations
+  tournament Tournament  @relation(fields: [tournamentId], references: [id])
+  user       User        @relation(fields: [userId], references: [id])
+  members    RegMember[]
+  team1Matches Match[]   @relation("Team1Matches")
+  team2Matches Match[]   @relation("Team2Matches")
+
+  @@unique([tournamentId, userId]) // Một user chỉ được nộp 1 đơn cho 1 giải
+  @@index([tournamentId])
+  @@index([userId])
+  @@map("registrations")
+}
+
+model RegMember {
+  id             String       @id @default(cuid())
+  registrationId String       @map("registration_id")
+  memberName     String       @map("member_name")
+  gameId         String       @map("game_id")
+
+  // Relations
+  registration Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+  @@map("reg_members")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  title     String
+  message   String   @db.Text
+  isRead    Boolean  @default(false) @map("is_read")
+  type      String?  // e.g., "REGISTRATION_UPDATE", "SYSTEM"
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@map("notifications")
+}
+
+model Match {
+  id           String       @id @default(cuid())
+  tournamentId String       @map("tournament_id")
+  team1Id      String?      @map("team1_id")
+  team2Id      String?      @map("team2_id")
+  team1Score   Int?
+  team2Score   Int?
+  startTime    DateTime?    @map("start_time")
+  status       String       @default("PENDING") // PENDING, ONGOING, COMPLETED
+  round        String?      // e.g. "Bán kết", "Chung kết"
+  evidenceImage String?     @db.LongText @map("evidence_image")
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  // Relations
+  tournament   Tournament    @relation(fields: [tournamentId], references: [id])
+  team1        Registration? @relation("Team1Matches", fields: [team1Id], references: [id])
+  team2        Registration? @relation("Team2Matches", fields: [team2Id], references: [id])
+
+  @@index([tournamentId])
+  @@index([team1Id])
+  @@index([team2Id])
+  @@map("matches")
+}
