@@ -1,0 +1,221 @@
+/* src/pages/Auth/Auth.css */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.auth-wrapper {
+  background: #151322; /* Esport dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+.auth-container {
+  background-color: #a29ccd;
+  border-radius: 16px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.4), 
+              0 10px 10px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  width: 860px; /* Slightly wider to accommodate ProForm */
+  max-width: 100%;
+  min-height: 580px; /* Slightly taller for ProForm inputs */
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+/* Ant Design ProForm Overrides to fit nicely */
+.form-container .ant-pro-form-login-container {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.form-container .ant-pro-form-login-main {
+  width: 100% !important;
+  min-width: 100% !important;
+  padding: 0 !important;
+}
+
+.form-container h1, .form-container h2 {
+  color: #fff !important;
+  margin-bottom: 8px;
+}
+
+.form-container p, .form-container .ant-typography {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.form-container .ant-form-item-explain-error {
+  text-align: left;
+}
+
+/* Sign In Form */
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+  opacity: 1;
+}
+
+.auth-container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0; /* Fade out when moved */
+  z-index: 1;
+}
+
+/* Sign Up Form */
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(0); /* Start at 0 */
+}
+
+.auth-container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* Overlay Container */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.auth-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+/* Overlay Background */
+.overlay {
+  background: linear-gradient(135deg, #1677ff 0%, #2F2356 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #FFFFFF;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.auth-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Typography & Buttons for Overlay */
+.overlay-panel h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.overlay-panel p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+}
+
+.overlay-btn {
+  border-radius: 24px;
+  border: 2px solid #FFFFFF;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in, background-color 0.3s;
+  cursor: pointer;
+}
+
+.overlay-btn:active {
+  transform: scale(0.95);
+}
+
+.overlay-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .auth-container {
+    width: 90%;
+    min-height: 700px;
+  }
+  
+  /* On mobile, stacking is better, but since it's a sliding effect, we'll try to keep it by scaling down */
+  .overlay-panel h1 { font-size: 1.8rem; }
+  .form-container { padding: 0 20px; }
+}
