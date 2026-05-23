@@ -1,0 +1,60 @@
+.animated-card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4) !important;
+    background-color: #1a1a1a !important; /* Dark solid background for bottom half */
+    border: none !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+.animated-card .ant-card-cover {
+    margin: 0 !important;
+}
+
+.animated-card .card-banner {
+    height: 200px;
+    background-size: 150% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: panBackground 15s ease-in-out infinite alternate;
+}
+
+.animated-card .ant-card-body {
+    flex: 1;
+    padding: 20px !important;
+    display: flex;
+    flex-direction: column;
+    background: transparent !important;
+}
+
+.card-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 16px;
+    white-space: normal;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.card-content p strong {
+    color: #ffeb3b;
+}
+
+@keyframes panBackground {
+    0% { background-position: left center; }
+    100% { background-position: right center; }
+}
