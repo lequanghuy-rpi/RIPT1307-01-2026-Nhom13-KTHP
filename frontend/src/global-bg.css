@@ -1,0 +1,96 @@
+/* src/global-bg.css */
+body {
+  background-color: #151322;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Global Glowing Background Elements */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.85;
+  animation: floatOrb 15s infinite alternate ease-in-out;
+}
+
+body::before {
+  top: -10%;
+  left: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(138,43,226,0.6) 0%, rgba(30,144,255,0.2) 60%, transparent 100%);
+  animation-delay: 0s;
+}
+
+body::after {
+  bottom: -10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,20,147,0.5) 0%, rgba(255,140,0,0.2) 60%, transparent 100%);
+  animation-delay: -5s;
+}
+
+/* Add a third one for more diversity */
+#root::before {
+  content: "";
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0,255,170,0.25) 0%, rgba(0,150,255,0.1) 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  animation: floatCenter 20s infinite alternate ease-in-out;
+}
+
+#root::after {
+  content: "";
+  position: fixed;
+  bottom: 20%;
+  left: 10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,69,0,0.35) 0%, rgba(255,215,0,0.15) 60%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(130px);
+  z-index: -1;
+  pointer-events: none;
+  animation: floatOrb 18s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 100px) scale(1.1); }
+  100% { transform: translate(-50px, -50px) scale(0.9); }
+}
+
+@keyframes floatCenter {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  50% { transform: translate(-40%, -60%) scale(1.2) rotate(180deg); }
+  100% { transform: translate(-60%, -40%) scale(0.8) rotate(360deg); }
+}
+
+/* Ensure Layouts are transparent to see the body background */
+.ant-layout,
+.ant-pro-layout,
+.ant-pro-layout-content,
+.ant-layout-content {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Header can be semi-transparent glassmorphism */
+.ant-pro-global-header, .ant-layout-header {
+  background: rgba(21, 19, 34, 0.7) !important;
+  backdrop-filter: blur(10px);
+}
