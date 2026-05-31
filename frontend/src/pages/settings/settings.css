@@ -1,0 +1,158 @@
+.settings-card {
+  background: rgba(20, 16, 35, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.settings-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255,255,255,0.05) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.settings-card .ant-card-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-weight: bold;
+}
+
+.settings-card .ant-typography {
+  color: #fff;
+}
+
+.settings-card .ant-form-item-label > label {
+  color: rgba(255,255,255,0.85);
+}
+
+.settings-card .ant-input,
+.settings-card .ant-input-password {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+.settings-card .ant-input:focus,
+.settings-card .ant-input-password:focus-within {
+  border-color: #8a2be2 !important;
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2) !important;
+}
+
+.settings-card .ant-input-password-icon {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.settings-card .ant-input-password-icon:hover {
+  color: rgba(255,255,255,1) !important;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.avatar-wrapper .ant-avatar {
+  border: 4px solid rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+  transition: filter 0.3s ease;
+}
+
+.avatar-clickable {
+  cursor: pointer;
+}
+
+.avatar-clickable:hover .ant-avatar {
+  filter: brightness(0.6);
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.avatar-overlay--visible {
+  opacity: 1;
+}
+
+.btn-danger {
+  background: transparent !important;
+  border-color: #ff4d4f !important;
+  color: #ff4d4f !important;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 77, 79, 0.1) !important;
+  box-shadow: 0 0 15px rgba(255, 77, 79, 0.4) !important;
+}
+
+/* ── User info block (username + email) ── */
+.user-info-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 20px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.user-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-info-icon {
+  font-size: 16px;
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+.user-info-detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-info-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.user-info-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
