@@ -1,0 +1,291 @@
+:root {
+  --match-h: 76px;
+  --pair-gap: 16px;
+  --connector-w: 28px;
+  --connector-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ── Wrapper ─────────────────────────────────── */
+.bracket-container {
+  overflow-x: auto;
+  padding-bottom: 24px;
+}
+
+.bracket-rounds {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  min-height: 400px;
+  padding: 16px 0;
+}
+
+/* ── Round column ────────────────────────────── */
+.bracket-round-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+.bracket-round-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 20px;
+  white-space: nowrap;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.bracket-round-matches {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+/* ── Pair (2 matches → 1 connector) ─────────── */
+.bracket-pair {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* vertical connector between 2 match slots */
+.bracket-pair::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--connector-w));
+  top: calc(var(--match-h) / 2);
+  height: calc(var(--pair-gap) + var(--match-h));
+  width: 2px;
+  background: var(--connector-color);
+}
+
+/* horizontal outgoing arm from pair midpoint */
+.bracket-pair::before {
+  content: '';
+  position: absolute;
+  right: calc(-2 * var(--connector-w));
+  top: calc(var(--match-h) + var(--pair-gap) / 2);
+  width: var(--connector-w);
+  height: 2px;
+  background: var(--connector-color);
+}
+
+/* ── Match slot (has right arm) ──────────────── */
+.bracket-match-slot {
+  position: relative;
+  height: var(--match-h);
+  display: flex;
+  align-items: center;
+}
+
+.bracket-match-slot:first-child {
+  margin-bottom: var(--pair-gap);
+}
+
+/* horizontal arm to the right */
+.bracket-match-slot::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--connector-w));
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--connector-w);
+  height: 2px;
+  background: var(--connector-color);
+}
+
+/* ── Match card ──────────────────────────────── */
+.bracket-match-card {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(10px);
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bracket-match-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.bracket-match-card.ongoing {
+  border-color: #fa8c16;
+  box-shadow: 0 0 8px rgba(250, 140, 22, 0.3);
+}
+
+/* ── Team row ────────────────────────────────── */
+.bracket-team-row {
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.bracket-team-row.winner {
+  background: rgba(82, 196, 26, 0.15);
+}
+
+.bracket-team-row.loser {
+  opacity: 0.4;
+}
+
+.bracket-team-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bracket-team-score {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  min-width: 20px;
+  text-align: center;
+}
+
+.bracket-team-row.winner .bracket-team-score {
+  color: #52c41a;
+}
+
+.bracket-match-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+}
+
+/* LIVE badge */
+.bracket-live-badge {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fa8c16;
+  letter-spacing: 1px;
+  animation: pulse-live 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ── Connector column between rounds ─────────── */
+.bracket-connector-col {
+  width: calc(2 * var(--connector-w));
+  flex-shrink: 0;
+}
+
+/* ── Champion box ────────────────────────────── */
+.bracket-champion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.bracket-champion-box {
+  text-align: center;
+  padding: 24px 32px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(250, 173, 20, 0.2), rgba(250, 173, 20, 0.05));
+  border: 1px solid rgba(250, 173, 20, 0.6);
+  box-shadow: 0 0 24px rgba(250, 173, 20, 0.25);
+  min-width: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bracket-champion-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  animation: rotate-champion 10s linear infinite;
+}
+
+@keyframes rotate-champion {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.bracket-champion-trophy {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.bracket-champion-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.bracket-champion-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #faad14;
+}
+
+/* ── Empty / loading states ──────────────────── */
+.bracket-empty {
+  text-align: center;
+  padding: 60px 0;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Premium Table ──────────────────────────── */
+.premium-table .ant-table {
+  background: transparent !important;
+}
+
+.premium-table .ant-table-thead>tr>th {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.premium-table .ant-table-tbody>tr>td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  transition: all 0.3s ease;
+}
+
+.premium-table .ant-table-tbody>tr:hover>td {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.premium-table .ant-table-tbody>tr:first-child>td {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.08), transparent) !important;
+}
