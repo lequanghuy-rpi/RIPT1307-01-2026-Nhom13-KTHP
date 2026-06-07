@@ -48,12 +48,14 @@ const GAME_COLORS: Record<string, string> = {
   'PUBG Mobile': 'orange',
   'Free Fire': 'red',
   'League of Legends': 'gold',
+  'Tốc Chiến': 'cyan',
   'VALORANT': 'volcano',
   'FC Online': 'green',
   'Mobile Legends: Bang Bang': 'cyan',
   'Teamfight Tactics': 'geekblue',
   'Counter-Strike 2': 'yellow',
   'Dota 2': 'purple',
+  'Identity V': 'magenta',
 };
 
 const STATUS_BADGE: Record<string, 'processing' | 'success' | 'default'> = {
@@ -293,12 +295,14 @@ export default function AdminTournamentsPage() {
             { label: 'PUBG Mobile', value: 'PUBG Mobile' },
             { label: 'Free Fire', value: 'Free Fire' },
             { label: 'League of Legends', value: 'League of Legends' },
+            { label: 'Tốc Chiến', value: 'Tốc Chiến' },
             { label: 'VALORANT', value: 'VALORANT' },
             { label: 'FC Online', value: 'FC Online' },
             { label: 'Mobile Legends: Bang Bang', value: 'Mobile Legends: Bang Bang' },
             { label: 'Teamfight Tactics', value: 'Teamfight Tactics' },
             { label: 'Counter-Strike 2', value: 'Counter-Strike 2' },
             { label: 'Dota 2', value: 'Dota 2' },
+            { label: 'Identity V', value: 'Identity V' },
           ]}
         />
         <Select
@@ -361,12 +365,14 @@ export default function AdminTournamentsPage() {
                 { label: 'PUBG Mobile', value: 'PUBG Mobile' },
                 { label: 'Free Fire', value: 'Free Fire' },
                 { label: 'League of Legends', value: 'League of Legends' },
+                { label: 'Tốc Chiến', value: 'Tốc Chiến' },
                 { label: 'VALORANT', value: 'VALORANT' },
                 { label: 'FC Online', value: 'FC Online' },
                 { label: 'Mobile Legends: Bang Bang', value: 'Mobile Legends: Bang Bang' },
                 { label: 'Teamfight Tactics', value: 'Teamfight Tactics' },
                 { label: 'Counter-Strike 2', value: 'Counter-Strike 2' },
                 { label: 'Dota 2', value: 'Dota 2' },
+                { label: 'Identity V', value: 'Identity V' },
               ]}
             />
           </Form.Item>

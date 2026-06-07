@@ -1,27 +1,48 @@
 /* src/pages/Auth/Auth.css */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Sora:wght@400;500;600&display=swap');
 
 .auth-wrapper {
-  background: #151322; /* Esport dark background */
+  background: #080B14; /* Refined dark cyberpunk background */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
   height: 100vh;
   margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Grid Background */
+.cyber-grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.5;
+  transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 300px; }
 }
 
 .auth-container {
-  background-color: #a29ccd;
+  background-color: #0F1322;
   border-radius: 16px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.4), 
-              0 10px 10px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: -15px 0 60px rgba(0, 229, 255, 0.25), 15px 0 60px rgba(255, 0, 128, 0.2), 0 20px 40px rgba(123, 47, 255, 0.15);
   position: relative;
   overflow: hidden;
-  width: 860px; /* Slightly wider to accommodate ProForm */
-  max-width: 100%;
-  min-height: 580px; /* Slightly taller for ProForm inputs */
+  width: 900px;
+  max-width: 90%;
+  min-height: 600px;
+  z-index: 10;
 }
 
 .form-container {
@@ -32,34 +53,167 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 50px;
 }
 
-/* Ant Design ProForm Overrides to fit nicely */
-.form-container .ant-pro-form-login-container {
-  background: transparent !important;
+/* Typography */
+.cyber-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cyber-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Sora', sans-serif;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), rgba(123, 47, 255, 0.1));
+  color: #00E5FF;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+/* Ant Design Form Overrides */
+.cyber-form {
+  width: 100%;
+}
+.cyber-form .ant-form-item-explain-error {
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Floating Label Pattern */
+.floating-label-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.floating-label-item .ant-input-affix-wrapper {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: all 0.3s ease;
   box-shadow: none !important;
-  padding: 0 !important;
-  width: 100% !important;
 }
 
-.form-container .ant-pro-form-login-main {
-  width: 100% !important;
-  min-width: 100% !important;
-  padding: 0 !important;
+.floating-label-item .ant-input-affix-wrapper:focus-within {
+  border-color: #00E5FF !important;
+  box-shadow: -5px 0 15px rgba(0, 229, 255, 0.3), 5px 0 15px rgba(255, 0, 128, 0.2) !important;
 }
 
-.form-container h1, .form-container h2 {
+.floating-label-item input {
+  background: transparent !important;
   color: #fff !important;
-  margin-bottom: 8px;
+  font-family: 'Sora', sans-serif;
 }
 
-.form-container p, .form-container .ant-typography {
-  color: rgba(255, 255, 255, 0.65) !important;
+.floating-label-item .ant-input-prefix {
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 12px;
+  font-size: 18px;
+  transition: all 0.3s ease;
 }
 
-.form-container .ant-form-item-explain-error {
-  text-align: left;
+.floating-label-item .ant-input-affix-wrapper:focus-within .ant-input-prefix {
+  color: #00E5FF;
+}
+
+/* Label styling and positioning */
+.floating-label {
+  position: absolute;
+  left: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  z-index: 1;
+}
+
+/* Magic happens here using :has pseudo-class */
+.floating-label-item:has(input:focus) .floating-label,
+.floating-label-item:has(input:not(:placeholder-shown)) .floating-label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  color: #00E5FF;
+  background-color: #0F1322; /* Matches form container background */
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+/* Button Styles */
+.cyber-btn {
+  background: linear-gradient(45deg, #00E5FF, #7B2FFF) !important;
+  border: none !important;
+  color: #fff !important;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(123, 47, 255, 0.2);
+}
+
+.cyber-btn:hover {
+  transform: scale(1.02);
+  box-shadow: -10px 0 25px rgba(0, 229, 255, 0.5), 10px 0 25px rgba(123, 47, 255, 0.5);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cyber-btn:hover .btn-shimmer, .overlay-btn:hover .btn-shimmer {
+  animation: shimmer 0.6s forwards;
+}
+
+@keyframes shimmer {
+  100% { left: 200%; }
 }
 
 /* Sign In Form */
@@ -72,7 +226,7 @@
 
 .auth-container.right-panel-active .sign-in-container {
   transform: translateX(100%);
-  opacity: 0; /* Fade out when moved */
+  opacity: 0;
   z-index: 1;
 }
 
@@ -82,7 +236,7 @@
   width: 50%;
   opacity: 0;
   z-index: 1;
-  transform: translateX(0); /* Start at 0 */
+  transform: translateX(0);
 }
 
 .auth-container.right-panel-active .sign-up-container {
@@ -93,14 +247,8 @@
 }
 
 @keyframes show {
-  0%, 49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-  50%, 100% {
-    opacity: 1;
-    z-index: 5;
-  }
+  0%, 49.99% { opacity: 0; z-index: 1; }
+  50%, 100% { opacity: 1; z-index: 5; }
 }
 
 /* Overlay Container */
@@ -121,10 +269,10 @@
 
 /* Overlay Background */
 .overlay {
-  background: linear-gradient(135deg, #1677ff 0%, #2F2356 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
+  background: #080B14;
+  background-image: radial-gradient(circle at 30% 70%, rgba(123, 47, 255, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 70% 30%, rgba(0, 229, 255, 0.2) 0%, transparent 60%),
+                    radial-gradient(circle at 50% 100%, rgba(255, 0, 128, 0.15) 0%, transparent 50%);
   color: #FFFFFF;
   position: relative;
   left: -100%;
@@ -170,52 +318,147 @@
   transform: translateX(20%);
 }
 
-/* Typography & Buttons for Overlay */
-.overlay-panel h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 16px;
-  color: #fff;
+/* Overlay Content styling */
+.overlay-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
-.overlay-panel p {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.5px;
-  margin-bottom: 30px;
-}
-
-.overlay-btn {
-  border-radius: 24px;
-  border: 2px solid #FFFFFF;
-  background-color: transparent;
-  color: #FFFFFF;
+.overlay-content p {
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
-  font-weight: bold;
-  padding: 12px 45px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 24px;
+}
+
+/* Dynamic Stats */
+.dynamic-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 32px 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-item span {
+  color: #00E5FF;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.stat-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Overlay Ghost Button */
+.overlay-btn.ghost {
+  background: transparent !important;
+  border: 1px solid #00E5FF !important;
+  color: #00E5FF !important;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: transform 80ms ease-in, background-color 0.3s;
+  padding: 0 32px;
+  height: 44px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.overlay-btn:active {
-  transform: scale(0.95);
+.overlay-btn.ghost:hover {
+  background: rgba(255, 0, 128, 0.1) !important;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.4), 0 0 25px rgba(0, 229, 255, 0.2);
+  border-color: #FF0080 !important;
+  color: #FF0080 !important;
+  transform: scale(1.05);
 }
 
-.overlay-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+/* Cyber Graphic Hexagons */
+.cyber-graphic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hexagon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 230px;
+  background: transparent;
+  border: 2px solid #00E5FF;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3), inset 0 0 15px rgba(0, 229, 255, 0.15);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: pulse 4s infinite alternate;
+}
+
+.hex-2 {
+  width: 260px;
+  height: 300px;
+  border: 1px solid #FF0080;
+  box-shadow: 0 0 25px rgba(255, 0, 128, 0.25), inset 0 0 15px rgba(255, 0, 128, 0.1);
+  animation: pulse 4s infinite alternate-reverse;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.9) rotate(0deg); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 1; }
+}
+
+/* Staggered Animations */
+.stagger-1 { animation: fadeUp 0.6s ease-out 0.1s both; }
+.stagger-2 { animation: fadeUp 0.6s ease-out 0.2s both; }
+.stagger-3 { animation: fadeUp 0.6s ease-out 0.3s both; }
+.stagger-4 { animation: fadeUp 0.6s ease-out 0.4s both; }
+.stagger-5 { animation: fadeUp 0.6s ease-out 0.5s both; }
+.stagger-6 { animation: fadeUp 0.6s ease-out 0.6s both; }
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .auth-container {
-    width: 90%;
+    width: 95%;
     min-height: 700px;
   }
   
-  /* On mobile, stacking is better, but since it's a sliding effect, we'll try to keep it by scaling down */
-  .overlay-panel h1 { font-size: 1.8rem; }
-  .form-container { padding: 0 20px; }
+  .cyber-title {
+    font-size: 22px;
+  }
+  
+  .dynamic-stats {
+    padding: 8px 12px;
+  }
 }

@@ -7,6 +7,7 @@ async function main() {
   console.log("Bắt đầu làm sạch và nạp lại dữ liệu (Seed)...");
 
   // Xóa sạch dữ liệu cũ
+  await prisma.match.deleteMany();
   await prisma.regMember.deleteMany();
   await prisma.registration.deleteMany();
   await prisma.notification.deleteMany();

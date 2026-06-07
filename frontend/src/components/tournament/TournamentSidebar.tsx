@@ -207,12 +207,14 @@ export default function TournamentSidebar({
                 { label: 'PUBG Mobile', value: 'PUBG Mobile' },
                 { label: 'Free Fire', value: 'Free Fire' },
                 { label: 'League of Legends', value: 'League of Legends' },
+                { label: 'Tốc Chiến', value: 'Tốc Chiến' },
                 { label: 'VALORANT', value: 'VALORANT' },
                 { label: 'FC Online', value: 'FC Online' },
                 { label: 'Mobile Legends: Bang Bang', value: 'Mobile Legends: Bang Bang' },
                 { label: 'Teamfight Tactics', value: 'Teamfight Tactics' },
                 { label: 'Counter-Strike 2', value: 'Counter-Strike 2' },
                 { label: 'Dota 2', value: 'Dota 2' },
+                { label: 'Identity V', value: 'Identity V' },
               ]}
             />
           </Form.Item>

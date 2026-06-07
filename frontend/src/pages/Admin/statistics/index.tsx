@@ -49,12 +49,14 @@ const GAME_COLORS: Record<string, string> = {
   'PUBG Mobile': 'orange',
   'Free Fire': 'red',
   'League of Legends': 'gold',
+  'Tốc Chiến': 'cyan',
   'VALORANT': 'volcano',
   'FC Online': 'green',
   'Mobile Legends: Bang Bang': 'cyan',
   'Teamfight Tactics': 'geekblue',
   'Counter-Strike 2': 'yellow',
   'Dota 2': 'purple',
+  'Identity V': 'magenta',
 };
 
 const STATUS_COLORS: Record<string, string> = {

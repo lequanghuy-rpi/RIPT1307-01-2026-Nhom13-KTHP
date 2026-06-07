@@ -16,55 +16,78 @@ const GAMES = [
     name: "Liên Quân Mobile",
     tournaments: ["Đấu Trường Danh Vọng (ĐTDV)", " AIC", "AWC", "APL", "GCS"],
     description: "Có thể xem là game esports mobile mạnh nhất VN nhiều năm liền.",
-    bgImage: "https://cdn-media.sforum.vn/storage/app/media/tao-tai-khoan-lien-quan-thumbail.jpg"
+    bgImage: "https://cdn-media.sforum.vn/storage/app/media/tao-tai-khoan-lien-quan-thumbail.jpg",
+    link: "https://lienquan.garena.vn/"
   },
   {
     name: "PUBG Mobile",
     tournaments: ["PMPL Vietnam", "PMGC"],
     description: "Việt Nam hiện là một trong những khu vực mạnh của PUBG Mobile.",
-    bgImage: "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-19vwb.jpg?resize=1&w=480&h=270&quality=medium"
+    bgImage: "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-19vwb.jpg?resize=1&w=480&h=270&quality=medium",
+    link: "https://www.pubg.com/vi/events/PAYDAYChallenge"
   },
   {
     name: "Free Fire",
     tournaments: ["Free Fire World Series"],
     description: "Cực phổ biến ở học sinh/sinh viên và máy cấu hình thấp.",
-    bgImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl8ChEz5aiEtyp5HkGleh0-J3JH8tUGCF3Hw&s"
+    bgImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl8ChEz5aiEtyp5HkGleh0-J3JH8tUGCF3Hw&s",
+    link: "https://ff.garena.vn/"
   },
   {
     name: "League of Legends",
     tournaments: ["VCS"],
     description: "Dù không còn peak như trước nhưng vẫn là tượng đài esports PC tại VN.",
-    bgImage: "https://cellphones.com.vn/sforum/wp-content/uploads/2022/11/lol-la-gi-0-1.jpg"
+    bgImage: "https://cellphones.com.vn/sforum/wp-content/uploads/2022/11/lol-la-gi-0-1.jpg",
+    link: "https://lienminh.vnggames.com/"
+  },
+  {
+    name: "Tốc Chiến",
+    tournaments: ["WRL Asia", "Icon Series SEA"],
+    description: "Phiên bản di động của Liên Minh Huyền Thoại với cộng đồng phát triển mạnh mẽ.",
+    bgImage: "https://gamek.mediacdn.vn/133514250583805952/2020/12/8/photo-1-16074157655971661587598.jpg",
+    link: "https://tocchien.vnggames.com/"
   },
   {
     name: "VALORANT",
     tournaments: ["VCT Challengers Vietnam"],
     description: "Tăng trưởng rất mạnh vài năm gần đây.",
-    bgImage: "https://www.riotgames.com/darkroom/1200/1dbd7211e78ce5faa7a8af9d10afad47:2b5979e3922758399ba389561e797919/ps-f2p-val-console-launch-16x9.jpg"
+    bgImage: "https://www.riotgames.com/darkroom/1200/1dbd7211e78ce5faa7a8af9d10afad47:2b5979e3922758399ba389561e797919/ps-f2p-val-console-launch-16x9.jpg",
+    link: "https://valorant.zing.vn/"
   },
   {
     name: "FC Online",
     tournaments: ["FVPL"],
     description: "Cộng đồng bóng đá ở VN rất đông nên game này luôn top.",
-    bgImage: "https://yt3.googleusercontent.com/4W8oATzTPHLlUha4Jk4WXGvvvnoEqvCXvEv88tBYDfWo1atYM7R4zXTgTqeD0R75PTu5vor0aQ=s900-c-k-c0x00ffffff-no-rj"
+    bgImage: "https://yt3.googleusercontent.com/4W8oATzTPHLlUha4Jk4WXGvvvnoEqvCXvEv88tBYDfWo1atYM7R4zXTgTqeD0R75PTu5vor0aQ=s900-c-k-c0x00ffffff-no-rj",
+    link: "https://fconline.garena.vn/"
   },
   {
     name: "Mobile Legends: Bang Bang",
     tournaments: [],
     description: "Dù chưa mạnh bằng Liên Quân ở VN nhưng đang tăng rất nhanh toàn SEA.",
-    bgImage: "https://cdn-www.bluestacks.com/bs-images/MLBB_KAL_ENG_1.jpg"
+    bgImage: "https://cdn-www.bluestacks.com/bs-images/MLBB_KAL_ENG_1.jpg",
+    link: "https://www.mobilelegends.com/"
   },
   {
     name: "Teamfight Tactics",
     tournaments: ["TFT Open", "Esports Nations Cup"],
     description: "Game chiến thuật có lượng streamer/view khá lớn.",
-    bgImage: "https://cdn1.epicgames.com/offer/ada73cc2d68a46a18f529ebb87328dee/EGS_TeamfightTactics_RiotGames_S1_2560x1440-7169170239c742b19f85abb788ea1e3f"
+    bgImage: "https://cdn1.epicgames.com/offer/ada73cc2d68a46a18f529ebb87328dee/EGS_TeamfightTactics_RiotGames_S1_2560x1440-7169170239c742b19f85abb788ea1e3f",
+    link: "https://www.metatft.com/"
   },
   {
     name: "Counter-Strike 2",
     tournaments: [],
     description: "Ở VN chưa mainstream bằng Valorant nhưng cộng đồng FPS hardcore rất mạnh.",
-    bgImage: "https://cdn-media.sforum.vn/storage/app/media/nhuy/nhuy/Nhu-Y/cau-hinh-choi-cs2-2.jpg"
+    bgImage: "https://cdn-media.sforum.vn/storage/app/media/nhuy/nhuy/Nhu-Y/cau-hinh-choi-cs2-2.jpg",
+    link: "https://www.counter-strike.net/cs2"
+  },
+  {
+    name: "Identity V",
+    tournaments: ["Call of the Abyss (COA)"],
+    description: "Tựa game kinh dị sinh tồn phi đối xứng cực cuốn hút với phong cách Gothic.",
+    bgImage: "https://didongviet.vn/dchannel/wp-content/uploads/2022/11/identity-v-didongviet@2x.jpg",
+    link: "https://idv.163.com/"
   }
 ];
 
@@ -154,10 +177,10 @@ export default function HomePage() {
           >
             <Form form={form} layout="vertical" onFinish={handleBroadcast}>
               <Form.Item name="title" label={<span style={{ color: 'rgba(255,255,255,0.85)' }}>Tiêu đề thông báo</span>} rules={[{ required: true, message: 'Vui lòng nhập tiêu đề' }]}>
-                <Input placeholder="Ví dụ: Bảo trì hệ thống tối nay" />
+                <Input placeholder="Tiêu đề thông báo" />
               </Form.Item>
               <Form.Item name="message" label={<span style={{ color: 'rgba(255,255,255,0.85)' }}>Nội dung chi tiết</span>} rules={[{ required: true, message: 'Vui lòng nhập nội dung' }]}>
-                <Input.TextArea rows={3} placeholder="Ví dụ: Server sẽ bảo trì từ 22:00 đến 00:00..." />
+                <Input.TextArea rows={3} placeholder="Nội dung cần thông báo chung" />
               </Form.Item>
               <Button type="primary" htmlType="submit" icon={<SendOutlined />} loading={broadcasting}>
                 Gửi thông báo ngay
@@ -225,6 +248,11 @@ export default function HomePage() {
             <Card
               hoverable
               className={styles.gameCard}
+              onClick={() => {
+                if (game.link) {
+                  window.open(game.link, '_blank', 'noopener,noreferrer');
+                }
+              }}
               style={{
                 height: '100%',
                 display: 'flex',

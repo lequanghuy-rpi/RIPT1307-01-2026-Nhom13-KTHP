@@ -101,11 +101,13 @@ const TournamentList: React.FC = () => {
               { value: 'PUBG Mobile', label: 'PUBG Mobile' },
               { value: 'Free Fire', label: 'Free Fire' },
               { value: 'League of Legends', label: 'League of Legends' },
+              { value: 'Tốc Chiến', label: 'Tốc Chiến' },
               { value: 'VALORANT', label: 'VALORANT' },
               { value: 'FC Online', label: 'FC Online' },
               { value: 'Mobile Legends: Bang Bang', label: 'Mobile Legends: Bang Bang' },
               { value: 'Teamfight Tactics', label: 'Teamfight Tactics' },
               { value: 'Counter-Strike 2', label: 'Counter-Strike 2' },
+              { value: 'Identity V', label: 'Identity V' },
             ]}
           />
           <Select 
